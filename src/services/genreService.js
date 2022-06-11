@@ -1,5 +1,5 @@
 import http from "./httpService";
-import { apiEndpoint } from "../config.json";
+import { apiGenreEndpoint } from "../config.json";
 
 export const genres = [
   { _id: "5b21ca3eeb7f6fbccd471818", name: "Action" },
@@ -8,5 +8,5 @@ export const genres = [
 ];
 
 export async function getGenres() {
-  return await http.get(apiEndpoint);
+  return await http.get(apiGenreEndpoint);
 }
