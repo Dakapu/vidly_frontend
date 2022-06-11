@@ -10,27 +10,14 @@ export function getMovie(id) {
   return http.get(apiMovieEndpoint + "/" + id);
 }
 
-export async function saveMovie(movie) {
-  let movieInDb = this.getMovie(movie._id) || {};
-
-  movieInDb.title = movie.title;
-  //movieInDb.genre = genresAPI.genres.find((g) => g._id === movie.genreId);
-  const { data } = await getGenres();
-  const genres = [...data];
-  console.log("Genres in Movies: ", genres);
-
-  movieInDb.genre = genres.find((g) => g._id === movie.genreId);
-
-  console.log("Genre of movie: ", movieInDb.genre);
-
-  movieInDb.numberInStock = movie.numberInStock;
-  movieInDb.dailyRentalRate = movie.dailyRentalRate;
-
-  if (!movieInDb._id) {
-    http.post(apiMovieEndpoint + "/" + movieInDb._id);
+export function saveMovie(movie) {
+  if (movie._id) {
+    const body = { ...movie };
+    delete body._id;
+    return http.put(apiMovieEndpoint + "/" + movie._id, body);
   }
 
-  return movieInDb;
+  return http.post(apiMovieEndpoint, movie);
 }
 
 export function deleteMovie(id) {
