@@ -22,7 +22,7 @@ class RegisterForm extends Form {
       console.log("Response: ", response);
       localStorage.setItem("token", response.headers["x-auth-token"]);
       console.log("Response Token: ", response.headers["x-auth-token"]);
-      this.props.history.push("/");
+      window.location = "/";
     } catch (ex) {
       if (ex.response && ex.response.status === 400) {
         const errors = { ...this.state.errors };

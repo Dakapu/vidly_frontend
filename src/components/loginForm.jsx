@@ -22,7 +22,7 @@ class LoginForm extends Form {
         this.state.data.password
       );
       localStorage.setItem("token", jwt);
-      this.props.history.push("/");
+      window.location = "/";
     } catch (ex) {
       if (ex.response && ex.response.status === 400) {
         const errors = { ...this.state.errors };
