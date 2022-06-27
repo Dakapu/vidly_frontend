@@ -7,7 +7,7 @@ import registerServiceWorker from "./registerServiceWorker";
 import "bootstrap/dist/css/bootstrap.css";
 import "font-awesome/css/font-awesome.css";
 
-console.log("Process: ", process.env);
+console.log("Process Name: ", process.env);
 
 ReactDOM.render(
   <BrowserRouter>
