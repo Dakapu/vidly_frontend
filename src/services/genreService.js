@@ -1,5 +1,6 @@
 import http from "./httpService";
-import { apiGenreEndpoint } from "../config.json";
+
+const apiGenreEndpoint = "/genres";
 
 export async function getGenres() {
   return await http.get(apiGenreEndpoint);
